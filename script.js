@@ -1,6 +1,7 @@
 const sendButton = document.getElementById('send-button')
 const taskContainer = document.getElementById('tasks-ul')
 const taskInput = document.getElementById('task-input')
+import MicroModal from 'micromodal'; 
 let feito = false;
 
 function takeTask(){ 
@@ -25,6 +26,7 @@ function createTask(){
     doneIcon.className = "fa-solid fa-check"
     editIcon.id = "edit-i"
     editIcon.className = "fa-solid fa-pencil"
+    editIcon.setAttribute('data-micromodal-trigger', 'modal-1');
     deleteTask.className = "x-button"
     deleteIcon.className = "fa-regular fa-circle-xmark"
 
@@ -57,7 +59,7 @@ function createTask(){
     }
 
     function editarTarefa(){
-        const newText = prompt("Write new task");
+        const newText = prompt("Write task!!!!");
         if (newText !== null && newText !== "")
             spanTask.textContent = newText
     }
@@ -70,4 +72,21 @@ function createTask(){
 sendButton.addEventListener("click", takeTask)
 
 
+document.addEventListener("DOMContentLoaded", function() {
+  
+    try {
+      
+      MicroModal.init({
+        awaitCloseAnimation: true,// set to false, to remove close animation
+        onShow: function(modal) {
+        },
+        onClose: function(modal) {
+        }
+      });
+      
+    } catch (e) {
+      console.log("micromodal error: ", e);
+    }
+    
+  });
 
