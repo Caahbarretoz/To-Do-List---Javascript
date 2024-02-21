@@ -13,6 +13,27 @@
         <h1>To Do List</h1>
         <div class="tasks-container">
             <ul id="tasks-ul">
+
+                <div id="edit">
+                    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+                        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                          <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                            <header class="modal__header">
+                              <h2 class="modal__title">
+                                Write new task
+                              </h2>
+                              <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                            </header>
+                            <div class="modal-content-content">
+                              <div class="modal__content">
+                                <input id="edit_input" type="text" placeholder="Write here...">
+                                <button id="button-apply" data-micromodal-close>Apply</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>                 
             </ul>
         </div>
         <div class="tasks-writter-container">
@@ -24,6 +45,6 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./dist/bundle.js/main.js"></script>
 </body>
 </html>
