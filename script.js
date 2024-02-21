@@ -1,9 +1,10 @@
+import MicroModal from 'micromodal'; 
 const sendButton = document.getElementById('send-button')
 const taskContainer = document.getElementById('tasks-ul')
 const taskInput = document.getElementById('task-input')
-const applyButton = document.getElementById('button-apply')
-import MicroModal from 'micromodal'; 
+
 let feito = false;
+let editingTask = null;
 
 function takeTask(){ 
     event.preventDefault();
@@ -59,21 +60,15 @@ function createTask(){
         taskContainer.removeChild(listTask)
     }
 
-    function editarTarefa(){
+    function editarTarefa(){     
+        editingTask = spanTask;
         MicroModal.show('modal-1');
     }
     
-    function setEditedTask(){
-        const valueInput = document.getElementById('edit_input')
-        if (valueInput !== null && valueInput !== "")
-            spanTask.textContent = valueInput.value;
-        valueInput.value = ""
-    }
 
     doneTask.addEventListener("click", tarefaFeita)
     deleteTask.addEventListener("click", deletarTarefa)
     editIcon.addEventListener("click", editarTarefa)
-    applyButton.addEventListener("click", setEditedTask)
 }
 
 sendButton.addEventListener("click", takeTask)
@@ -82,14 +77,24 @@ sendButton.addEventListener("click", takeTask)
 document.addEventListener("DOMContentLoaded", function() {
   
     try {
-      
-      MicroModal.init({
-        awaitCloseAnimation: true,// set to false, to remove close animation
-        onShow: function(modal) {
-        },
-        onClose: function(modal) {
-        }
-      });
+        MicroModal.init({
+            awaitCloseAnimation: true,
+            onShow: function(modal) {},
+            onClose: function(modal) {}
+        });
+
+        const applyButton = document.getElementById('button-apply');
+        applyButton.addEventListener("click", function() {
+            if (editingTask) {
+                const editedTaskInput = document.getElementById('edit_input');
+                if (editedTaskInput !== null && editedTaskInput.value !== "") {
+                    editingTask.textContent = editedTaskInput.value;
+                    MicroModal.close('modal-1');
+                    editingTask = null; 
+                    editedTaskInput.value = ""
+                };         
+            }
+        });
       
     } catch (e) {
       console.log("micromodal error: ", e);
