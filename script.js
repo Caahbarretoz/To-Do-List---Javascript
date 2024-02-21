@@ -1,6 +1,7 @@
 const sendButton = document.getElementById('send-button')
 const taskContainer = document.getElementById('tasks-ul')
 const taskInput = document.getElementById('task-input')
+const applyButton = document.getElementById('button-apply')
 import MicroModal from 'micromodal'; 
 let feito = false;
 
@@ -59,14 +60,20 @@ function createTask(){
     }
 
     function editarTarefa(){
-        const newText = prompt("Write task!!!!");
-        if (newText !== null && newText !== "")
-            spanTask.textContent = newText
+        MicroModal.show('modal-1');
     }
     
+    function setEditedTask(){
+        const valueInput = document.getElementById('edit_input')
+        if (valueInput !== null && valueInput !== "")
+            spanTask.textContent = valueInput.value;
+        valueInput.value = ""
+    }
+
     doneTask.addEventListener("click", tarefaFeita)
     deleteTask.addEventListener("click", deletarTarefa)
     editIcon.addEventListener("click", editarTarefa)
+    applyButton.addEventListener("click", setEditedTask)
 }
 
 sendButton.addEventListener("click", takeTask)

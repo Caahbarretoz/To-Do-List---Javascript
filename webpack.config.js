@@ -2,7 +2,7 @@ module.exports = {
     mode: 'development',
     entry: './script.js',
     output: {
-        filename: 'main.js'
+        filename: './bundle.js/main.js'
     },
     devtool: "source-map"
 };
