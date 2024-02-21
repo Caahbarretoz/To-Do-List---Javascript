@@ -19,6 +19,7 @@ body {
     height: 380px;
     background: #00000020;
     backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgb(0, 0, 0);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -158,6 +159,7 @@ body {
     background-color: #52525200;
     backdrop-filter: blur(30px);
     box-shadow: 0 10px 40px rgba(255, 238, 238, 0.3);
+    border-radius: 15px;
     position: fixed;
     top: 0;
     left: 0;
